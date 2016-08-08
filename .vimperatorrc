@@ -36,7 +36,8 @@ noremap <Space> 3j
 "noremap <C-g> 3k
 noremap <C-f> :tabopen<Space>www.ifeng.com<Return>
 noremap <C-s> :tabopen<Space>www.6vhao.com<Return>
-noremap <C-q> :tabopen www.sohu.com<CR>
+noremap <C-q> :tabopen<Space>www.sohu.com<Return>
+"noremap <C-q> :tabopen www.sohu.com<CR>
 noremap <C-b> :tabopen<Space>www.baidu.com<Return>
 noremap <C-d> :tabopen<Space>www.dongtaiwang.com<Return>
 noremap <C-e> :tabopen<Space>www.jd.com<Return>
