@@ -9,7 +9,17 @@ inoremap <A-f> <C-t>wi
 inoremap <A-b> <C-t>bi
 "map ,s :so<Space>"C:\Users\Michael\_vimperatorrc"<Return>
 "map <leader>s :so C:\Users\Michael\_vimperatorrc<CR>
-map , :so C:\Users\Michael\_vimperatorrc<CR>
+
+"probably works on windows
+"map , :so C:\Users\Michael\_vimperatorrc<CR>
+
+"next line works in linux,test is ok
+map , :so ~/.vimperatorrc<CR>
+
+
+" 让配置变更立即生效 test not works in linux
+"autocmd BufWritePost ~/.vimperatorrc source  ~/.vimperatorrc
+
 noremap e u
 noremap s D
 noremap z g0
