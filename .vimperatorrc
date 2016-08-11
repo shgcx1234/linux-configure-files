@@ -18,8 +18,9 @@ map , :so ~/.vimperatorrc<CR>
 
 
 " 让配置变更立即生效 test not works in linux
-"autocmd BufWritePost ~/.vimperatorrc source  ~/.vimperatorrc
+"autocmd! bufwritepost ~/.vimperatorrc source  ~/.vimperatorrc
 
+"noremap `` '' 
 noremap e u
 noremap s D
 noremap z g0
