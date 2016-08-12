@@ -1,4 +1,3 @@
-
 " 定义快捷键的前缀，即 <Leader>
 let mapleader="\<Space>"
 
@@ -29,7 +28,8 @@ nmap <Leader>O O<Esc>
 
 
 " 定义快捷键关闭当前分割窗口
-nmap <Leader>q :wq<CR>
+nmap <Leader>q :q<CR>
+nmap <Leader>s :wq<CR>
 " 定义快捷键保存当前窗口内容
 nmap <Leader>w :w<CR>
 " 定义快捷键保存所有窗口内容并退出 vim
@@ -76,7 +76,8 @@ set number
 
 
 " search
-"set hlsearch                    " highlight searches
+set hlsearch                    " highlight searches
+nnoremap <CR> :nohlsearch<cr>
 "set nohlsearch                    " no highlight searches
 set incsearch                   " do incremental searching, search as you type
 set ignorecase                  " ignore case when searching
