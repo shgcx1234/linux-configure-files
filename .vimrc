@@ -25,7 +25,13 @@ nmap <Leader>p "+p
 
 nmap <Leader>o o<Esc>
 nmap <Leader>O O<Esc>
+"nmap <F2> I"<Esc>
+"nmap <F3> I#<Esc>
+"nmap <F4> 0x
 
+nmap <Leader>a I#<Esc>
+nmap <Leader>f I"<Esc>
+nmap <Leader>d 0x
 
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
@@ -130,3 +136,5 @@ colorscheme phd
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
+
+set scrolloff=17
