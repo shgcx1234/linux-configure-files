@@ -14,9 +14,19 @@ filetype plugin on
 " jj 替换 Esc
 inoremap jj <Esc>
 
+"set F* function
+nnoremap <F2> :set nu! nu?<CR>
+nnoremap <F3> :set list! list?<CR>
+nnoremap <F4> :set wrap! wrap?<CR>
+set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
+au InsertLeave * set nopaste
+nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+
 " 定义快捷键到行首和行尾
-nmap LB 0
-nmap LE $
+nmap <Leader>h 0
+nmap <Leader>l $
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -138,3 +148,10 @@ syntax enable
 syntax on
 
 set scrolloff=17
+
+"Keep search pattern at the center of the screen."
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
