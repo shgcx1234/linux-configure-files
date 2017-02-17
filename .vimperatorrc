@@ -2,11 +2,13 @@
 
 let mapleader = "<Space>"
 "let mapleader = "\"
+
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <A-d> <C-t>dwi
 inoremap <A-f> <C-t>wi
 inoremap <A-b> <C-t>bi
+
 "map ,s :so<Space>"C:\Users\Michael\_vimperatorrc"<Return>
 "map <leader>s :so C:\Users\Michael\_vimperatorrc<CR>
 
@@ -35,16 +37,22 @@ noremap c ]]
 noremap v [[
 noremap j 3j
 noremap k 3k
+
 "noremap! jj <ESC>
 cnoremap jj <ESC>
 inoremap jj <ESC>
-noremap <Space> 3j
+
+"noremap <Space> 3j
 "noremap <leader>f <C-f>
 "noremap <leader>d <C-d>
 "noremap <leader>s <C-u>
 "noremap <leader>a <C-a>
 "noremap <C-f> 3j
 "noremap <C-g> 3k
+
+noremap <C-a> :tabopen<Space>addons.mozilla.org<Return>
+noremap <C-x> :tabopen<Space>about:addons<Return>
+
 noremap <C-f> :tabopen<Space>www.ifeng.com<Return>
 noremap <C-g> :tabopen<Space>www.google.com<Return>
 noremap <C-s> :tabopen<Space>www.6vhao.com<Return>
@@ -52,15 +60,19 @@ noremap <C-q> :tabopen<Space>www.sohu.com<Return>
 noremap <C-b> :tabopen<Space>www.baidu.com<Return>
 noremap <C-d> :tabopen<Space>www.dongtaiwang.com<Return>
 noremap <C-e> :tabopen<Space>www.jd.com<Return>
-noremap <C-t> :tabopen<Space>www.tmall.com<Return>
 noremap <C-v> :tabopen<Space>www.youku.com<Return>
+noremap <C-w> :tabopen<Space>www.freebuf.com<Return>
+
 noremap <C-r> :restart<CR>
-"noremap <C-w> :tabopen<Space>www.freebuf.com<Return>
+noremap <C-t> ZZ
+
 noremap <C-j> :se gui=navigation <CR>
 noremap <C-k> :se gui=nonavigation <CR>
+
 set tabnumbers
 set hintchars=hjklasdf
 set gui=none,tabs
+
 set "nextpattern=s*下一页|下一张|下一篇|下页|下一頁|后页s*,^bnextb,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b"
 set "previouspattern=\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$,s*上一页|上一頁|上一张|上页s*,bprev|previousb"
 source! "C:\\Users\\Michael\\_vimperatorrc.local"
