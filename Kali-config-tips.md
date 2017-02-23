@@ -4,7 +4,8 @@
 
 ---
 ## 1、根据网络环境，配置网络参数
-- 建议安装系统时就设置好，否则可能有问题  
+- 建议安装系统时就设置好，否则可能有问题
+
 ## 2、配置更新源
 - 如果因为某些原因，你在安装kali过程中，当被问到“使用网络镜像”时选择了否（建议安装系统时选是），可能会导致你的sources.list文件中丢失一些条目，或者因为别的原因导致你使用apt-get命令总是找不到数据包，这时候就要考虑更新下源。
 vim /etc/apt/sources.list
@@ -77,13 +78,13 @@ vim ~/shadow.json
   7 "method":"AES-256-CFB"
   8 }
 ```
-*配置成自启动服务
-首先安装Supervisor
+### 配置成自启动服务
+* 首先安装Supervisor
 ```
 apt-get update 
 apt-get install supervisor
 ```
-然后编辑 /etc/supervisor/conf.d/shadowsocks.conf
+* 然后编辑 /etc/supervisor/conf.d/shadowsocks.conf
 ```
 [program:shadowsocks] 
 command=ssserver -c /etc/shadowsocks.json 
@@ -91,14 +92,14 @@ autorestart=true
 user=nobody
 ```
 
-如果你想绑定的端口是小于1024的则需要将user改为root
+* 如果你想绑定的端口是小于1024的则需要将user改为root
 
 在 /etc/default/supervisor 最后加一行：
 ```
 ulimit -n 51200
 ```
 
-然后执行
+* 然后执行
 ```
 service supervisor start 
 supervisorctl reload
@@ -106,7 +107,7 @@ supervisorctl reload
 
 SS就变成一个服务了，这样，SS将在开机时自动启动，而如果进程意外退出，Supervisor也会自动重启SS。
 
-在/etc/rc.local文件中添加 service supervisor start（否则 supervisor 貌似无法开机启动）
+* 在/etc/rc.local文件中添加 service supervisor start（否则 supervisor 貌似无法开机启动）
 
 ## 7、同步火狐
 
