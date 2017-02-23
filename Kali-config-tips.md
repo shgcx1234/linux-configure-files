@@ -4,7 +4,7 @@
 
 ---
 ## 1、根据网络环境，配置网络参数
-- 建议安装系统时就设置好，否则可能有问题
+- 建议安装系统时就设置好，否则可能有问题<br>
 ## 2、配置更新源
 - 如果因为某些原因，你在安装kali过程中，当被问到“使用网络镜像”时选择了否（建议安装系统时选是），可能会导致你的sources.list文件中丢失一些条目，或者因为别的原因导致你使用apt-get命令总是找不到数据包，这时候就要考虑更新下源。
 vim /etc/apt/sources.list
@@ -56,6 +56,7 @@ Kali 2.0启用自动登录用户
 将生成的.ssh/id_rsa.pub的全部内容添加到github账号
 2. `git clone git@github.com:shgcx1234/linux-configure-files.git
 ./linux-configure-files/link.sh`
+
 ## 5、安装搜狗拼音
 ```
 apt-get install fcitx
