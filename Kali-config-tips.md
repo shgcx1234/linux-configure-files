@@ -41,13 +41,15 @@ apt-get install aptitude
 
 ## 3、简单配置系统
 * 交换ctrl和capslock
-You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.
-For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”
-log out and log in again for changes to impact your system.
+
+	* You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.
+	* For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”
+	* log out and log in again for changes to impact your system.
 
 * 设置重启时，root自动登录
-`root@kali:~# vim /etc/gdm3/daemon.conf`
-Kali 2.0启用自动登录用户
+
+	`root@kali:~# vim /etc/gdm3/daemon.conf`
+	Kali 2.0启用自动登录用户
 
 
 * 设置启动终端的快捷键
@@ -55,8 +57,8 @@ Kali 2.0启用自动登录用户
 ## 4、克隆git中的配置文件
 1. `ssh-keygen -t rsa -C shgcx1234@gmail.com`
 将生成的.ssh/id_rsa.pub的全部内容添加到github账号
-2. `git clone git@github.com:shgcx1234/linux-configure-files.git
-./linux-configure-files/link.sh`
+2. `git clone git@github.com:shgcx1234/linux-configure-files.git`
+3. `./linux-configure-files/link.sh`
 
 ## 5、安装搜狗拼音
 ```
@@ -72,7 +74,7 @@ vim ~/shadow.json
 {
   2 "server":"52.192.119.175",
   3 "server_port":"443",
-  4 "local_port":"1080",
+  4 "local_port":"1080",(不要也行）
   5 "password":"8013601",
   6 "timeout":"600",
   7 "method":"AES-256-CFB"
@@ -87,14 +89,14 @@ apt-get install supervisor
 * 然后编辑 /etc/supervisor/conf.d/shadowsocks.conf
 ```
 [program:shadowsocks] 
-command=ssserver -c /etc/shadowsocks.json 
+command=sslocal -c /etc/shadowsocks.json 
 autorestart=true 
 user=nobody
 ```
 
 * 如果你想绑定的端口是小于1024的则需要将user改为root
 
-在 /etc/default/supervisor 最后加一行：
+	在 /etc/default/supervisor 最后加一行：
 ```
 ulimit -n 51200
 ```
