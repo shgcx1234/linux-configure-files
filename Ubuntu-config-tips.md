@@ -3,6 +3,7 @@
 # 1、根据网络环境，配置网络参数
 
 1) 配置静态IP
+
 `sudo vi /etc/network/interfaces`
 
 	原有内容只有如下两行：
@@ -11,7 +12,6 @@ auto lo
 iface lo inet loopback
 ```
 如果是动态获取IP地址，那么就不需要添加如下内容
-
 如果设置静态IP,向末尾追加以下内容：
 ```
 auto eth0   （是否为eth0，可以通过ifconfig -a 查看）
@@ -24,7 +24,7 @@ broadcast 192.168.0.255 （不是必须）
 ```
 然后保存退出；
 
-2) 配置DNS
+2) 配置DNS  
 编辑sudo vi /etc/resolv.conf
 
 向末尾追加如下内容（如果机器可以上网但不知道DNS的话，可以通过在终端使用nm-tool命令来查看）：
@@ -51,9 +51,9 @@ apt-get install aptitude
 # 3、简单配置系统
 1) 交换ctrl和capslock
 
-You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.
+You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.  
 For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”  
-log out and log in again for changes to impact your system.
+log out and log in again for changes to impact your system.  
 2) 安装vim-gnome以使vim支持系统剪贴板  
 `sudo apt-get install vim-gnome`
 
