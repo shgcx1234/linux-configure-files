@@ -50,14 +50,12 @@ apt-get install vim-gnome (使vim支持系统剪贴板）
 ```
 
 # 3、简单配置系统
-1) 交换ctrl和capslock
+* 交换ctrl和capslock
 
 You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.  
 For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”  
 log out and log in again for changes to impact your system.
-
-3) 配置等宽字体
-
+* 配置等宽字体
 终端-编辑-配置文件首选项-custom font 选择等宽字体
 
 # 4、安装搜狗拼音
