@@ -1,4 +1,5 @@
 # Ubuntu安装后配置
+===
 # 1、根据网络环境，配置网络参数
 
 1) 配置静态IP
@@ -56,6 +57,7 @@ You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting
 For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”  
 log out and log in again for changes to impact your system.
 * 配置等宽字体
+
 终端-编辑-配置文件首选项-custom font 选择等宽字体
 
 # 4、安装搜狗拼音
@@ -65,7 +67,7 @@ dpkg -i 搜狗deb安装包路径（**如果报依赖错误的话，apt-get -f in
 alt+F2,搜索fcitx,点击启动fcitx，右上角选择搜狗输入法，另配置中删除多余输入法。
 ```
 
-# 5、git中的配置文件
+# 5、clone github中的配置文件
 1) 生成ssh key并添加到github
 ```
 ssh-keygen -t rsa -C shgcx1234@gmail.com
