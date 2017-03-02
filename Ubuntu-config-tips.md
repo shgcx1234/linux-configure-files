@@ -93,9 +93,10 @@ sudo ./linux-configure-files/link.sh
 
 # 7、安装shadowsocks
 1) 安装并配置shadowsocks
+
+`sudo -s` ** 建议提前切换成root ，获取超级管理员权限（或者在后面所有命令前都要加上sudo，包括在supervisor配置文件中的SS启动命令以及在rc.local中的SS开机启动命令，否则会报各种不同用户相互之间（root与Ubuntu）没权限的错误导致命令无法正常运行。）
+（貌似不同用户安装的软件，别的用户调用该命令（root貌似也无法调用用户Ubuntu安装的部分程序命令和文件）的时候容易出现各种权限问题，建议都用同一个用户（root）进行安装和运行 **
 ```
-sudo -s // 切换成root ，获取超级管理员权限（或者在后面所有命令前都要加上sudo，包括在supervisor配置文件中的SS启动命令以及在rc.local中的SS开机启动命令，否则会报各种不同用户相互之间（root与Ubuntu）没权限的错误导致命令无法正常运行。）
-（貌似不同用户安装的软件，别的用户调用该命令（root貌似也无法调用用户Ubuntu安装的部分程序命令和文件）的时候容易出现各种权限问题，建议都用同一个用户（root）进行安装和运行
 apt-get install python-pip // 安装python包管理工具pip
 pip install shadowsocks // 安装shadowsocks  （加 sudo)
 vim ~/shadow.json
