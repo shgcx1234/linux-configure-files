@@ -1,5 +1,5 @@
 # Ubuntu安装后配置
----
+===
 # 1、根据网络环境，配置网络参数
 
 1) 配置静态IP
@@ -24,9 +24,9 @@ broadcast 192.168.0.255 （不是必须）
 ```
 然后保存退出；
 
-2) 配置DNS  
-编辑sudo vi /etc/resolv.conf
+2) 配置DNS
 
+编辑`sudo vi /etc/resolv.conf`  
 向末尾追加如下内容（如果机器可以上网但不知道DNS的话，可以通过在终端使用nm-tool命令来查看）：
 ```
 nameserver DNS地址
@@ -34,7 +34,6 @@ nameserver DNS地址
 然后保存退出。
 
 3) 重启网络服务`sudo /etc/init.d/networking restart` （貌似没用，需要重启电脑才行）
-
 
 4) (貌似没碰到这个问题）这里有点有问题，就是重启ubuntu后，发现又不能上网了，问题出在 /etc/resolv.conf。重启后，此文件配置的dns又被自动修改为默认值。所以需要永久性修改DNS。方法如下：编辑sudo vim /etc/resolvconf/resolv.conf.d/base，添加：
 ```
@@ -46,6 +45,8 @@ sudo reboot，重启就可以上网了
 ```
 apt-get update & apt-get upgrade
 apt-get install aptitude
+apt-get install vim
+apt-get install vim-gnome (使vim支持系统剪贴板）
 ```
 
 # 3、简单配置系统
@@ -53,11 +54,10 @@ apt-get install aptitude
 
 You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.  
 For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”  
-log out and log in again for changes to impact your system.  
-2) 安装vim-gnome以使vim支持系统剪贴板  
-`sudo apt-get install vim-gnome`
+log out and log in again for changes to impact your system.
 
-3) 配置等宽字体  
+3) 配置等宽字体
+
 终端-编辑-配置文件首选项-custom font 选择等宽字体
 
 # 4、安装搜狗拼音
