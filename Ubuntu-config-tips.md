@@ -7,7 +7,6 @@
 	原有内容只有如下两行：
 ```
 auto lo
-
 iface lo inet loopback
 ```
 如果是动态获取IP地址，那么就不需要添加如下内容
@@ -15,13 +14,9 @@ iface lo inet loopback
 如果设置静态IP,向末尾追加以下内容：
 ```
 auto eth0   （是否为eth0，可以通过ifconfig -a 查看）
-
 iface eth0 inet static
-
 address 静态IP地址
-
 netmask 255.255.255.0
-
 gateway 192.168.0.1 
 network 192.168.0.0 （不是必须） 
 broadcast 192.168.0.255 （不是必须）
@@ -39,17 +34,15 @@ nameserver DNS地址
 3) 重启网络服务`sudo /etc/init.d/networking restart` （貌似没用，需要重启电脑才行）
 
 
-4) （貌似没碰到这个问题）这里有点有问题，就是重启ubuntu后，发现又不能上网了，问题出在 /etc/resolv.conf。重启后，此文件配置的dns又被自动修改为默认值。所以需要永久性修改DNS。方法如下：编辑sudo vim /etc/resolvconf/resolv.conf.d/base，添加：
+4) (貌似没碰到这个问题）这里有点有问题，就是重启ubuntu后，发现又不能上网了，问题出在 /etc/resolv.conf。重启后，此文件配置的dns又被自动修改为默认值。所以需要永久性修改DNS。方法如下：编辑sudo vim /etc/resolvconf/resolv.conf.d/base，添加：
 ```
 nameserver DNS地址
-
 sudo reboot，重启就可以上网了
 ```
 
 # 2、配置更新源（否则无法安装VIM等常用软件）
 ```
 apt-get update & apt-get upgrade
-
 apt-get install aptitude
 ```
 
@@ -57,9 +50,13 @@ apt-get install aptitude
 1) 交换ctrl和capslock
 
 You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.
-
-For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”
+For example to map capslock to control set XKBOPTIONS=“ctrl:nocaps”  
 log out and log in again for changes to impact your system.
+2) 安装vim-gnome以使vim支持系统剪贴板
+`sudo apt-get install vim-gnome`
+
+3) 配置等宽字体
+终端-编辑-配置文件首选项-custom font 选择等宽字体
 
 # 4、安装搜狗拼音
 ```
@@ -83,6 +80,7 @@ sudo ./linux-configure-files/link.sh
 ```
 
 # 6、默认启用tmux
+`sudo vim .bashrc`在文件末尾添加如下代码
 ```
   #create or reattach a tmux session when open a term
   #if you want to pass ctrl-A to remote OregonUbuntu's tmux, you should press ctrl-A twice
@@ -94,13 +92,10 @@ sudo ./linux-configure-files/link.sh
 # 7、安装shadowsocks
 1) 安装并配置shadowsocks
 ```
-    sudo -s // 切换成root ，获取超级管理员权限（或者在后面所有命令前都要加上sudo，包括在supervisor配置文件中的SS启动命令以及在rc.local中的SS开机启动命令，否则会报各种不同用户相互之间（root与Ubuntu）没权限的错误导致命令无法正常运行。）
-   （貌似不同用户安装的软件，别的用户调用该命令（root貌似也无法调用用户Ubuntu安装的部分程序命令和文件）的时候容易出现各种权限问题，建议都用同一个用户（root）进行安装和运行
-
-    apt-get install python-pip // 安装python包管理工具pip
-
-    pip install shadowsocks // 安装shadowsocks  （加 sudo)
-
+sudo -s // 切换成root ，获取超级管理员权限（或者在后面所有命令前都要加上sudo，包括在supervisor配置文件中的SS启动命令以及在rc.local中的SS开机启动命令，否则会报各种不同用户相互之间（root与Ubuntu）没权限的错误导致命令无法正常运行。）
+（貌似不同用户安装的软件，别的用户调用该命令（root貌似也无法调用用户Ubuntu安装的部分程序命令和文件）的时候容易出现各种权限问题，建议都用同一个用户（root）进行安装和运行
+apt-get install python-pip // 安装python包管理工具pip
+pip install shadowsocks // 安装shadowsocks  （加 sudo)
 vim ~/shadow.json
 {
   2 "server":"52.192.119.175",
@@ -120,12 +115,11 @@ apt-get install supervisor
 * 然后编辑 /etc/supervisor/conf.d/shadowsocks.conf
 ```
 [program:shadowsocks]
-command=ssserver -c /etc/shadowsocks.json (此处路径最好为绝对路径，因为root的～和Michael不一样）
+command=sslocal -c /etc/shadowsocks.json (此处路径最好为绝对路径，因为root的～和Michael不一样）
 autorestart=true
 user=nobody
 ```
-如果你想绑定的端口是小于1024的则需要将user改为root
-
+* 如果你想绑定的端口是小于1024的则需要将user改为root
 在 /etc/default/supervisor 最后加一行：
 ```
 ulimit -n 51200
