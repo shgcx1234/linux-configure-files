@@ -6,13 +6,13 @@
 `sudo vi /etc/network/interfaces`
 
 	原有内容只有如下两行：
-```
+```bash
 auto lo
 iface lo inet loopback
 ```
 如果是动态获取IP地址，那么就不需要添加如下内容
 如果设置静态IP,向末尾追加以下内容：
-```
+```bash
 auto eth0   （是否为eth0，可以通过ifconfig -a 查看）
 iface eth0 inet static
 address 静态IP地址
@@ -20,6 +20,7 @@ netmask 255.255.255.0
 gateway 192.168.0.1 
 network 192.168.0.0 （不是必须） 
 broadcast 192.168.0.255 （不是必须）
+dns-nameservers DNS地址（不是必须）
 ```
 然后保存退出；
 
@@ -32,9 +33,9 @@ nameserver DNS地址
 ```
 然后保存退出。
 
-3) 重启网络服务`sudo /etc/init.d/networking restart` （貌似没用，需要重启电脑才行）
+3) 重启网络服务`sudo /etc/init.d/networking restart` （貌似没用，需要重启电脑才行,或者试试`sudo ifdown eth0 && sudo ifup eth0`）
 
-4) (貌似没碰到这个问题）这里有点有问题，就是重启ubuntu后，发现又不能上网了，问题出在 /etc/resolv.conf。重启后，此文件配置的dns又被自动修改为默认值。所以需要永久性修改DNS。方法如下：编辑sudo vim /etc/resolvconf/resolv.conf.d/base，添加：
+4) (貌似没碰到这个问题）这里有点有问题，就是重启ubuntu后，发现又不能上网了，问题出在 /etc/resolv.conf。重启后，此文件配置的dns又被自动修改为默认值。所以需要永久性修改DNS。方法如下：编辑`sudo vim /etc/resolvconf/resolv.conf.d/base`，添加：
 ```
 nameserver DNS地址
 sudo reboot，重启就可以上网了
@@ -100,10 +101,10 @@ apt-get install python-pip // 安装python包管理工具pip
 pip install shadowsocks // 安装shadowsocks  （加 sudo)
 vim ~/shadow.json
 {
-  2 "server":"52.192.119.175",
+  2 "server":"*********",
   3 "server_port":"443",
   4 "local_port":"1080",
-  5 "password":"8013601",
+  5 "password":"*******",
   6 "timeout":"600",
   7 "method":"AES-256-CFB"
   8 }
