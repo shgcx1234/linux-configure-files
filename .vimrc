@@ -9,6 +9,39 @@ filetype on
 " 根据侦测到的不同类型加载对应的插件
 filetype plugin on
 
+
+" airline config
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+
+" 是否打开tabline
+" let g:airline#extensions#tabline#enabled = 1
+" easymotion config
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+"map <Leader><Leader>j <Plug>(easymotion-j)
+"map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+
+"gundo config
+nnoremap <leader>h :GundoToggle<CR>
+
+"vim-expand-region config
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+
+"undotree config
+nnoremap <Leader>u :UndotreeToggle<cr>
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
 " vim 自身（非插件）快捷键
 
 " jj 替换 Esc
@@ -25,8 +58,8 @@ au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 " 定义快捷键到行首和行尾
-nmap <Leader>h 0
-nmap <Leader>l $
+nmap H 0
+nmap L $
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -35,6 +68,7 @@ nmap <Leader>p "+p
 
 nmap <Leader>o o<Esc>
 nmap <Leader>O O<Esc>
+nmap <Leader>g Go<CR>
 "nmap <F2> I"<Esc>
 "nmap <F3> I#<Esc>
 "nmap <F4> 0x
@@ -85,6 +119,7 @@ set ruler
 
 " 开启行号显示
 set number
+set relativenumber
 
 " 高亮显示当前行/列
 "set cursorline
@@ -108,7 +143,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
-"Plugin 'Lokaltog/vim-powerline'
+Plugin 'Lokaltog/vim-powerline'
+" enable vim-powerline plugin
+let g:Powerline_symbols = 'fancy'
+"Plugin 'bling/vim-airline'
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'derekwyatt/vim-fswitch'
@@ -120,7 +158,9 @@ Plugin 'vim-scripts/phd'
 "Plugin 'vim-scripts/vimprj'
 "Plugin 'dyng/ctrlsf.vim'
 "Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 "Plugin 'vim-scripts/DrawIt'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Valloric/YouCompleteMe'
@@ -128,9 +168,15 @@ Plugin 'vim-scripts/phd'
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'fholgado/minibufexpl.vim'
 "Plugin 'gcmt/wildfire.vim'
-"Plugin 'sjl/gundo.vim'
-"Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'suan/vim-instant-markdown'
+
+Plugin 'Raimondi/delimitMate'
+Plugin 'sjl/gundo.vim'
+Plugin 'mbbill/undotree'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'terryma/vim-expand-region'
 "Plugin 'lilydjwg/fcitx.vim'
 " 插件列表结束
 call vundle#end()
