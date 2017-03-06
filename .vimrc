@@ -9,39 +9,6 @@ filetype on
 " 根据侦测到的不同类型加载对应的插件
 filetype plugin on
 
-
-" airline config
-if !exists('g:airline_symbols')
-let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '❮'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-
-" 是否打开tabline
-" let g:airline#extensions#tabline#enabled = 1
-" easymotion config
-map <Leader><leader>h <Plug>(easymotion-linebackward)
-"map <Leader><Leader>j <Plug>(easymotion-j)
-"map <Leader><Leader>k <Plug>(easymotion-k)
-map <Leader><leader>l <Plug>(easymotion-lineforward)
-
-"gundo config
-nnoremap <leader>h :GundoToggle<CR>
-
-"vim-expand-region config
-vmap v <Plug>(expand_region_expand)
-vmap V <Plug>(expand_region_shrink)
-
-"undotree config
-nnoremap <Leader>u :UndotreeToggle<cr>
-if has("persistent_undo")
-    set undodir=~/.undodir/
-    set undofile
-endif
 " vim 自身（非插件）快捷键
 
 " jj 替换 Esc
@@ -143,10 +110,24 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
-Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
 " enable vim-powerline plugin
-let g:Powerline_symbols = 'fancy'
-"Plugin 'bling/vim-airline'
+"let g:Powerline_symbols = 'fancy'
+
+Plugin 'bling/vim-airline'
+" airline config
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+" 是否打开tabline
+" let g:airline#extensions#tabline#enabled = 1
+
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'derekwyatt/vim-fswitch'
@@ -170,13 +151,36 @@ Plugin 'tpope/vim-repeat'
 "Plugin 'gcmt/wildfire.vim'
 
 Plugin 'Raimondi/delimitMate'
+
 Plugin 'sjl/gundo.vim'
-Plugin 'mbbill/undotree'
+"gundo config
+nnoremap <leader>h :GundoToggle<CR>
+
+"Plugin 'mbbill/undotree'
+"undotree config
+"nnoremap <Leader>u :UndotreeToggle<cr>
+"if has("persistent_undo")
+    "set undodir=~/.undodir/
+    "set undofile
+"endif
+
 Plugin 'Lokaltog/vim-easymotion'
+" easymotion config
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+"map <Leader><Leader>j <Plug>(easymotion-j)
+"map <Leader><Leader>k <Plug>(easymotion-k)
+"map <Leader><Leader>f <Plug>(easymotion-f)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
-Plugin 'terryma/vim-expand-region'
+
+"Plugin 'terryma/vim-expand-region'
+"vim-expand-region config
+"vmap v <Plug>(expand_region_expand)
+"vmap V <Plug>(expand_region_shrink)
+
 "Plugin 'lilydjwg/fcitx.vim'
 " 插件列表结束
 call vundle#end()
