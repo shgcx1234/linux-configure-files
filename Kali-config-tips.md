@@ -125,8 +125,8 @@ export HISTSIZE=10000
 #注销后保存的历史纪录条目数量
 export SAVEHIST=10000
 
-#历史纪录文件
-#export HISTFILE=~/.zhistory
+#历史纪录文件位置
+export HISTFILE=~/linux-configure-files/.msy_history
 
 #以附加的方式写入历史纪录
 setopt INC_APPEND_HISTORY
