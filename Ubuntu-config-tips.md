@@ -137,5 +137,36 @@ SS就变成一个服务了，这样，SS将在开机时自动启动，而如果�
 
 # 8、同步火狐
 
+# 9、配置.zshrc，添加历史记录相关命令
+`vim .zshrc`,添加如下内容：
+```
+#关于历史纪录的配置 {{{
 
+#历史纪录条目数量
+export HISTSIZE=10000
+#注销后保存的历史纪录条目数量
+export SAVEHIST=10000
 
+#历史纪录文件位置
+export HISTFILE=~/linux-configure-files/.msy_history
+
+#以附加的方式写入历史纪录
+setopt INC_APPEND_HISTORY
+
+#如果连续输入的命令相同，历史纪录中只保留一个
+#setopt HIST_IGNORE_DUPS      
+# 不保留重复的历史记录项
+setopt HIST_IGNORE_ALL_DUPS
+#在命令前添加空格，不将此命令添加到纪录文件中
+setopt HIST_IGNORE_SPACE      
+
+#为历史纪录中的命令添加时间戳      
+setopt EXTENDED_HISTORY      
+
+#启用 cd 命令的历史纪录，cd -[TAB]进入历史路径
+setopt AUTO_PUSHD
+#相同的历史路径只保留一个
+setopt PUSHD_IGNORE_DUPS
+
+#}}}
+```
