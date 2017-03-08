@@ -4,8 +4,9 @@
 * 给root用户设置个密码
     
     `sudo passwd root`
-* 在配置文件里设置自启动
-	* 编辑/etc/lightdm/lightdm.conf：
+* 设置自动登录
+	* 方法一 系统设置-用户账户-解锁-打开自动登录(貌似只有普通用户可以这样)
+	* 方法二 编辑/etc/lightdm/lightdm.conf：(所有账号都适用)
 	    ```
 	    sudo vim  /etc/lightdm/lightdm.conf
 
@@ -14,13 +15,13 @@
 	    autologin-user=root
 	    autologin-user-timeout=0
 
-	    user-session=ubuntu
-	    greeter-session=unity-greeter
-	    allow-guest=false
+	    (貌似不需要下面的代码就可以搞定)
+	    #user-session=ubuntu
+	    #greeter-session=unity-greeter
+	    #allow-guest=false
 	    # greeter-show-manual-login=true
-	    ```
-	    
-	* 编辑/root/.profile文件，增加tty -s &&：
+
+* 编辑/root/.profile文件，增加tty -s &&：
 
 	    `tty -s && mesg n || true` 
 
