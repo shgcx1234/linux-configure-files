@@ -19,7 +19,7 @@
 	    #user-session=ubuntu
 	    #greeter-session=unity-greeter
 	    #allow-guest=false
-	    # greeter-show-manual-login=true
+	    #greeter-show-manual-login=true
 
 * 编辑/root/.profile文件，增加tty -s &&：
 
@@ -159,6 +159,7 @@ supervisorctl reload
 ```
 SS就变成一个服务了，这样，SS将在开机时自动启动，而如果进程意外退出，Supervisor也会自动重启SS。
 * 在/etc/rc.local文件中添加 service supervisor start（否则 supervisor 貌似无法开机启动）
+    (20170307 貌似现在不需要这一步也可以自启动了)
 
 ## 8、同步火狐
 
