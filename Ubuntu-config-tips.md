@@ -1,5 +1,27 @@
 # Ubuntu安装后配置
 ===
+# 0、启用root并配置自动登录
+* 给root用户设置个密码
+    `sudo passwd root`
+* 在配置文件里设置自启动
+	* 编辑/etc/lightdm/lightdm.conf：
+	    ```
+	    sudo vim  /etc/lightdm/lightdm.conf
+
+	    [Seat:*]
+	    autologin-guest=false
+	    autologin-user=root
+	    autologin-user-timeout=0
+
+	    user-session=ubuntu
+	    greeter-session=unity-greeter
+	    allow-guest=false
+	    # greeter-show-manual-login=true
+	    ```
+	    
+	* 编辑/root/.profile文件，增加tty -s &&：
+
+	    `tty -s && mesg n || true` 
 # 1、根据网络环境，配置网络参数
 
 1) 配置静态IP
