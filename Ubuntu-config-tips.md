@@ -1,6 +1,6 @@
 # Ubuntu安装后配置
 ===
-# 0、启用root并配置自动登录
+## 0、启用root并配置自动登录
 * 给root用户设置个密码
     
     `sudo passwd root`
@@ -25,13 +25,13 @@
 
 	    `tty -s && mesg n || true` 
 
-# 1、根据网络环境，配置网络参数
+## 1、根据网络环境，配置网络参数
 
 1) 配置静态IP
 
 `sudo vi /etc/network/interfaces`
 
-	原有内容只有如下两行：
+原有内容只有如下两行：
 ```bash
 auto lo
 iface lo inet loopback
@@ -67,7 +67,7 @@ nameserver DNS地址
 sudo reboot，重启就可以上网了
 ```
 
-# 2、配置更新源（否则无法安装VIM等常用软件）
+## 2、配置更新源（否则无法安装VIM等常用软件）
 ```
 apt-get update & apt-get upgrade
 apt-get install aptitude
@@ -75,7 +75,7 @@ apt-get install vim
 apt-get install vim-gnome (使vim支持系统剪贴板）
 ```
 
-# 3、简单配置系统
+## 3、简单配置系统
 * 交换ctrl和capslock
 
 You should edit the file /etc/default/keyboard and modify the XKBOPTIONS setting.  
@@ -85,14 +85,14 @@ log out and log in again for changes to impact your system.
 
 终端-编辑-配置文件首选项-custom font 选择等宽字体
 
-# 4、安装搜狗拼音
+## 4、安装搜狗拼音
 ```
 apt-get install fcitx
 dpkg -i 搜狗deb安装包路径（**如果报依赖错误的话，apt-get -f install貌似可以安装依赖包，从而解决此问题**）
 alt+F2,搜索fcitx,点击启动fcitx，右上角选择搜狗输入法，另配置中删除多余输入法。
 ```
 
-# 5、clone github中的配置文件
+## 5、clone github中的配置文件
 1) 生成ssh key并添加到github
 ```
 ssh-keygen -t rsa -C shgcx1234@gmail.com
@@ -106,17 +106,17 @@ git clone git@github.com:shgcx1234/linux-configure-files.git
 sudo ./linux-configure-files/link.sh
 ```
 
-# 6、默认启用tmux
+## 6、默认启用tmux
 `sudo vim .bashrc`在文件末尾添加如下代码
 ```
-  #create or reattach a tmux session when open a term
-  #if you want to pass ctrl-A to remote OregonUbuntu's tmux, you should press ctrl-A twice
-  #ctrl-A ctrl-A d you can restore your last work around when you ssh to remote ubuntu
-  tmux attach-session -t "$USER" || tmux new-session -s "$USER"
-  exit
+#create or reattach a tmux session when open a term
+#if you want to pass ctrl-A to remote OregonUbuntu's tmux, you should press ctrl-A twice
+#ctrl-A ctrl-A d you can restore your last work around when you ssh to remote ubuntu
+tmux attach-session -t "$USER" || tmux new-session -s "$USER"
+exit
 ```
 
-# 7、安装shadowsocks
+## 7、安装shadowsocks
 1) 安装并配置shadowsocks
 
 `sudo -s` **建议提前切换成root ，获取超级管理员权限（或者在后面所有命令前都要加上sudo，包括在supervisor配置文件中的SS启动命令以及在rc.local中的SS开机启动命令，否则会报各种不同用户相互之间（root与Ubuntu）没权限的错误导致命令无法正常运行。）
@@ -160,9 +160,9 @@ supervisorctl reload
 SS就变成一个服务了，这样，SS将在开机时自动启动，而如果进程意外退出，Supervisor也会自动重启SS。
 * 在/etc/rc.local文件中添加 service supervisor start（否则 supervisor 貌似无法开机启动）
 
-# 8、同步火狐
+## 8、同步火狐
 
-# 9、配置.zshrc，添加历史记录相关命令
+## 9、配置.zshrc，添加历史记录相关命令
 `vim .zshrc`,添加如下内容：
 ```
 #关于历史纪录的配置 {{{
