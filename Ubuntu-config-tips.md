@@ -178,7 +178,7 @@ SS就变成一个服务了，这样，SS将在开机时自动启动，而如果�
 ## 8、同步火狐
 * 安装flash
 ```
-sudo apt install flashplugin-installer
+aptitude install flashplugin-installer
 ```
 
 ## 9、配置.zshrc，添加历史记录相关命令
