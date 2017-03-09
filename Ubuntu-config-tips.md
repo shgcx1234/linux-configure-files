@@ -92,7 +92,7 @@ dpkg -i 搜狗deb安装包路径（**如果报依赖错误的话，apt-get -f in
 alt+F2,搜索fcitx,点击启动fcitx，右上角选择搜狗输入法，另配置中删除多余输入法。
 ```
 * 设置搜狗拼音开机自启动
-	* 方法一、 ubuntu 16.10 貌似取消了 rc.local 讲相应程序复制到 ~/.config /autostart 即可.
+	* 方法一、 ubuntu 16.10 貌似取消了 rc.local ,将相应程序复制到 ~/.config /autostart 即可.
 	    ```
 	 参考如下:
 	 sudo cp /usr/share/applications/fcitx.desktop ~/.config /autostart ##将 fcitx 复制到启动项.
@@ -100,7 +100,8 @@ alt+F2,搜索fcitx,点击启动fcitx，右上角选择搜狗输入法，另配�
 	
 	 备注:若~/.config 文件下没有 autostart,创建即可.
 	 ```
-	 * 方法二 在 dash 搜“启动应用程序”,添加fcitx为自启动项
+
+	* 方法二 在 dash 搜“启动应用程序”,添加fcitx为自启动项
 
 ## 5、clone github中的配置文件
 1) 生成ssh key并添加到github
