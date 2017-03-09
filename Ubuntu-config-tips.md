@@ -94,7 +94,7 @@ alt+F2,搜索fcitx,点击启动fcitx，右上角选择搜狗输入法，另配�
 ```
 * 设置搜狗拼音开机自启动
 	* 方法一、 ubuntu 16.10 貌似取消了 rc.local ,将相应程序复制到 ~/.config /autostart 即可.
-	 ```
+	    ```
 	 参考如下:
 	 sudo cp /usr/share/applications/fcitx.desktop ~/.config /autostart ##将 fcitx 复制到启动项.
 	 sudo chmod +x ~/.config /autostart/fcitx.desktop ##修改权限为可执行权限
