@@ -107,26 +107,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
-"Plugin 'Lokaltog/vim-powerline'
-" enable vim-powerline plugin
-"let g:Powerline_symbols = 'fancy'
 
-Plugin 'bling/vim-airline'
-" airline config
-if !exists('g:airline_symbols')
-let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '❮'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-" 是否打开tabline
-" let g:airline#extensions#tabline#enabled = 1
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'Raimondi/delimitMate'
+Plugin 'lilydjwg/fcitx.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+"Plugin 'suan/vim-instant-markdown'
 
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'nathanaelkane/vim-indent-guides'
@@ -139,9 +132,6 @@ let g:airline_symbols.branch = '⎇'
 "Plugin 'vim-scripts/vimprj'
 "Plugin 'dyng/ctrlsf.vim'
 "Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
 "Plugin 'vim-scripts/DrawIt'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Valloric/YouCompleteMe'
@@ -150,10 +140,40 @@ Plugin 'tpope/vim-repeat'
 "Plugin 'fholgado/minibufexpl.vim'
 "Plugin 'gcmt/wildfire.vim'
 
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Lokaltog/vim-powerline'
+" enable vim-powerline plugin
+"let g:Powerline_symbols = 'fancy'
+
+Plugin 'bling/vim-airline'
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+" 是否打开tabline
+" let g:airline#extensions#tabline#enabled = 1
+
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
 
 Plugin 'sjl/gundo.vim'
-"gundo config
 nnoremap <leader>h :GundoToggle<CR>
 
 "Plugin 'mbbill/undotree'
@@ -165,23 +185,73 @@ nnoremap <leader>h :GundoToggle<CR>
 "endif
 
 Plugin 'Lokaltog/vim-easymotion'
-" easymotion config
 map <Leader><leader>h <Plug>(easymotion-linebackward)
 "map <Leader><Leader>j <Plug>(easymotion-j)
 "map <Leader><Leader>k <Plug>(easymotion-k)
 "map <Leader><Leader>f <Plug>(easymotion-f)
 map <Leader><leader>l <Plug>(easymotion-lineforward)
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'suan/vim-instant-markdown'
 
-"Plugin 'terryma/vim-expand-region'
-"vim-expand-region config
-"vmap v <Plug>(expand_region_expand)
-"vmap V <Plug>(expand_region_shrink)
+Plugin 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
 
-"Plugin 'lilydjwg/fcitx.vim'
+
+Plugin 'kien/rainbow_parentheses.vim'
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+" 不加入这行, 防止黑色括号出现, 很难识别
+" \ ['black',       'SeaGreen3'],
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
+Plugin 'scrooloose/syntastic'
+let g:syntastic_error_symbol='>>'
+let g:syntastic_warning_symbol='>'
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_enable_highlighting=1
+let g:syntastic_python_checkers=['pyflakes'] " 使用pyflakes,速度比pylint快
+let g:syntastic_javascript_checkers = ['jsl', 'jshint']
+let g:syntastic_html_checkers=['tidy', 'jshint']
+" 修改高亮的背景色, 适应主题
+highlight SyntasticErrorSign guifg=white guibg=black
+" to see error location list
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_loc_list_height = 5
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+nnoremap <Leader>e :call ToggleErrors()<cr>
+" nnoremap <Leader>en :lnext<cr>
+" nnoremap <Leader>ep :lprevious<cr>
+
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
