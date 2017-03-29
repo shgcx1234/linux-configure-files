@@ -1,7 +1,7 @@
 * 1、根据网络环境，配置网络参数
 
 
-1) 编辑：~sudo vi /etc/network/interfaces~
+1) 编辑： =sudo vi /etc/network/interfaces=
 
 原有内容只有如下两行：
 #+BEGIN_SRC 
@@ -49,11 +49,11 @@ sudo /etc/init.d/networking restart （貌似没用，需要重启电脑才行�
 #+END_SRC
 
 
-4) （貌似没碰到这个问题）这里有点有问题，就是重启ubuntu后，发现又不能上网了，问题出在 =/etc/resolv.conf=。重启后，此文件配置的dns又被自动修改为默认值。所以需要永久性修改DNS。方法如下：编辑sudo vim /etc/resolvconf/resolv.conf.d/base，添加：
+4) （貌似没碰到这个问题）这里有点有问题，就是重启ubuntu后，发现又不能上网了，问题出在 =/etc/resolv.conf= 。重启后，此文件配置的dns又被自动修改为默认值。所以需要永久性修改DNS。方法如下：编辑sudo vim /etc/resolvconf/resolv.conf.d/base，添加：
 
 nameserver DNS地址
 
-=sudo reboot=，重启就可以上网了
+ =sudo reboot= ，重启就可以上网了
 
 
 * 2、配置更新源（否则无法安装VIM等常用软件）
