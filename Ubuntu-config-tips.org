@@ -1,7 +1,7 @@
 * 1、根据网络环境，配置网络参数
 
 
-1) 编辑：=sudo vi /etc/network/interfaces=
+1) 编辑：~sudo vi /etc/network/interfaces~
 
 原有内容只有如下两行：
 #+BEGIN_SRC 
