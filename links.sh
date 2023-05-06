@@ -1,8 +1,9 @@
 #!/bin/bash
 
-#1.Create ssh keys,then paste .ssh/id_rsa.pub content to github
+#1. install git on server, then
+#Create ssh keys,then paste .ssh/id_rsa.pub content to github
 #ssh-keygen -t rsa -C test06182126.com
-#git clone git@github.com:shgcx1234/linux-configure-files.git ~/linux-configure-files
+#git clone git@github.com:shgcx1234/linux-configure-files.git
 
 #2.sudo linux-configure-files/links.sh
 echo "create links of configs"
