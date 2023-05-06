@@ -23,7 +23,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #install zsh
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s /bin/zsh 
+#(no need)chsh -s /bin/zsh 
 #git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 #cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
