@@ -24,9 +24,12 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ln -sf ~/linux-configure-files/.zsh_history  ~/.zsh_history
-# add netxt line into .zshrc
+# add lines below into .zshrc
 # It logs duplicate commands. But every time you open terminal, it will delete all duplicate commands.
 #setopt hist_ignore_all_dups
+# how many lines to keep in the history file
+#SAVEHIST=50000
+
 
 
 
